@@ -1,2 +1,2 @@
 # Algorithm
-Algorithm problem solving @Baekjoon, @Programmers
+Read codes at each branch
