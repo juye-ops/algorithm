@@ -1,0 +1,1 @@
+print("\n".join(map(str, [sum(map(int, input().split())) for _ in range(int(input()))])))
