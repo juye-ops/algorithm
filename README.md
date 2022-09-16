@@ -5,15 +5,22 @@
 
 # History
 
-### 1400점 돌파 - 2022-09-02
-<img src="static/profile_score.png">
+### 프로그래머스 점수 1400점 돌파 - 2022-09-02
+<img src="static/score_over_1400.png">
 
 <br>
 
-### 현재 랭킹 Top 5000 이내, 코딩테스트 100문제 해결 - 2022-09-08
-<img src="static/profile_status.png" width=1000px>
+### 프로그래머스 현재 랭킹 Top 5000 이내 진입, 코딩테스트 100문제 해결 - 2022-09-08
+- 이미지 통일을 위해 Element 수정 후 이미지 재등록 (2022-09-17)
+
+<img src="static/solve_100.png">
 
 <br>
 
 ### 프로그래머스 Level 1 전 문제 해결 완료 - 2022-09-11
-<img src="static/lv1_all_solve.png" width=1000px>
+<img src="static/lv1_all_solve.png">
+
+<br>
+
+### 프로그래머스 순위 4000위 이내 진입 - 2022-09-17
+<img src="static/rank_inner_4000.png">
