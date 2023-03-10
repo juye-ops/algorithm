@@ -1,50 +1,41 @@
-import copy
-from collections import deque
-import sys
-sys.setrecursionlimit(10**9)
-
-def dfs(n, graph, answers):
-    if n not in answers:
-        answers.append(n)
-
-    if not graph[n]:
+def dfs(N, V, graph, visited, answer = []):
+    if visited[V]:
         return
+    visited[V] = True
+    answer.append(V)
+    
+    for v in graph[V]:
+        dfs(N, v, graph, visited, answer)
+    
+    return " ".join(map(str, answer))
 
-    while(graph[n]):
-        next = graph[n].pop(0)
-        graph[next].remove(n)
-        dfs(next, graph, answers)
+    
 
-def bfs(start, graph, answers):
+def bfs(N, V, graph, visited):
+    from collections import deque
     q = deque()
-    q.append(start)
+    q.append(V)
+    answer = []
     while q:
         now = q.popleft()
-        if now not in answers:
-            answers.append(now)
-        while(graph[now]):
-            q.append(graph[now].pop(0))
+        if visited[now]:
+            continue
+        visited[now] = True
+        answer.append(now)
+        for v in graph[now]:
+            q.append(v)
+    
+    return " ".join(map(str, answer))
 
 
-def solution(V, E, start):
-    graph = {x:[] for x in range(1, V+1)}
-    answers1 = []
-    answers2 = []
-    for i in range(E):
-        a, b = map(int, input().split())
-        graph[a].append(b)
-        graph[b].append(a)
-    for i in graph:
-        graph[i].sort()
+N, M, V = map(int, input().split())
+graph = {x: [] for x in range(1, N+1)}
+for i in range(M):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+for x in graph:
+    graph[x].sort()
 
-
-    dfs(start, copy.deepcopy(graph), answers1)
-    bfs(start, copy.deepcopy(graph), answers2)
-    answer = ""
-    answer+=" ".join(map(str, answers1))
-    answer+="\n"
-    answer+=" ".join(map(str, answers2))
-    return answer
-
-print(solution(*map(int, input().split())))
-
+print(dfs(N, V, graph, {x: False for x in graph}))
+print(bfs(N, V, graph, {x: False for x in graph}))
