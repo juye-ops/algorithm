@@ -1,28 +1,12 @@
-import itertools
-import math
-
 def solution(clothes):
-    dct = dict()
+    items = {}
+    answer = 1
     for i in clothes:
-        if i[1] not in dct:
-            dct[i[1]] = 1
-        else:
-            dct[i[1]]+=1
-
-    tmp = list(reversed(dct.values()))
-    trig = False
-    for i in tmp:
-        if i != 1:
-            trig = True
-            break
-
-    if not trig: return 2**len(dct) - 1
-
-
-    answer = 0
-    for i in range(len(dct)):
-        permute = list(itertools.combinations(dct.values(), i+1))
-        for j in permute:
-            answer += math.prod(j)
-
-    return answer
+        if items.get(i[1]) is None:
+            items[i[1]] = 1 # 안입은 경우도 리스트에 포함해서 최종적으로 모두 안입은 1을 빼줌
+        items[i[1]]+=1
+    
+    for i in items.values():
+        answer *= i
+    
+    return answer-1
