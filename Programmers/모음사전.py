@@ -1,15 +1,12 @@
 def solution(word):
     answer = 0
-    odd = "AEIOU"
-    pattern = [1, 6, 31, 156, 781]
-    for i in range(len(word)):
-        answer+=(pattern[4-i] * odd.find(word[i]))+1
     
-    # A
-    # AA
-    # AAA
-    # AAAA
-    # AAAAA
-    # AAAAE
-    # 5 -> 6*5 -> 31*5 -> 156*5 -> 781*5
+    alpha = 'AEIOU'
+    gap = [5*(5*(5*(1*5+1)+1)+1)+1, 5*(5*(1*5+1)+1)+1, 5*(1*5+1)+1, 1*5+1, 1]
+    
+    for i, x in enumerate(word):
+        answer += (alpha.index(x) * gap[i])+1
+    
     return answer
+
+# gap[i-1] = gap[i] * 5 + 1
