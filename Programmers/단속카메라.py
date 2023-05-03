@@ -1,12 +1,9 @@
 def solution(routes):
-    answer = 0
-    routes.sort()
-    now = -30000
+    answer = 1
+    routes.sort(key = lambda x: x[1])
+    now = routes[0][1]
     for i in routes:
-        if i[0] <= now:
-            now = min(now, i[1])
-        else:
-            answer+=1
+        if now < i[0]:
+            answer += 1
             now = i[1]
-        
     return answer
