@@ -1,0 +1,9 @@
+def solution(s, skip, index):
+    answer = ''
+    alphabet = set(chr(x) for x in range(97, 123))
+    alphabet -= set(skip)
+    alphabet = sorted(alphabet)
+    
+    for i in s:
+        answer += alphabet[(alphabet.index(i)+index)%len(alphabet)]
+    return answer
